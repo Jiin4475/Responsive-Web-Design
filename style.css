@@ -8,20 +8,39 @@ a{
     text-decoration: none;
 }
 
+
 #main-header{
-    height: 80px;
+    height: 5rem;/*ㄱem 은 브라우저 폰트 기준*/
     display: flex;/*콘텐츠가 나란히 서게 함*/
     justify-content: space-between;/*양 끝으로 밀어줌 */
     align-items: center;
     background-color: rgb(29, 26, 24);
-    padding: 0px 20px;/*양 옆의 여백을 넣어줌*/
+    padding: 0px 5%;/*양 옆의 여백을 넣어줌*/
 }
 
 #logo{
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: bold;
     color: rgb(238, 164, 80);
     text-transform: uppercase;
+
+}
+
+.menu-btn{
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    display: none;
+    
+
+
+}
+.menu-btn span{
+    width: 100%;
+    height: 3px;
+    background-color: white;
 
 }
 
@@ -34,63 +53,136 @@ a{
 
 }
 #main-header li{
-    margin: 0 16px;
+    margin: 0 1rem;
     /*상하는 0 px 좌우에 각 16 px */
 }
 
 #main-header nav a{
     color: rgb(185, 131, 31);
-    font-size: 20px;
+    font-size: 1.2rem;
 }
 #main-header nav a:hover{
     color: rgb(228, 163, 44);
+} 
+
+#side-drawer{
+    width:100%;
+    height: 100%;
+    background-color: rgb(29, 26, 27);
+    position: fixed;/*포지션을 고정해서 뒷배경이 페이지 상단에 고정*/
+    top: 0;
+    left: 0; 
+    display: none;
+} 
+
+#side-drawer:target{
+    display: block;
+
+}
+#side-drawer header{
+height: 5rem;/*ㄱem 은 브라우저 폰트 기준*/
+    display: flex;/*콘텐츠가 나란히 서게 함*/
+    justify-content: flex-end;/*사이드 바라서 오른쪽으로  */
+    align-items: center;
+    background-color: rgb(29, 26, 24);
+    padding: 0px 5%;/*양 옆의 여백을 넣어줌*/
+}
+ 
+#side-drawer ul{
+   list-style: none;
+   margin: 0;
+   padding: 4rem 1rem;
+   display: flex;/*id 가 block 요소이기 때문에 display:flex 로 나란히 정렬 그다음 세로 정렬을 위해
+        column*/
+   align-items: center;
+   flex-direction: column;
+}
+
+#side-drawer li{
+    margin: 1rem 0;
+}
+
+#side-drawer a{
+    color: rgb(253, 239, 213);
+    font-size: 2rem;
+
 }
 main h1{
     text-align: center;
     color: rgb(238, 164, 80);
-    font-size: 38px;
+    font-size: 3rem;
 }
 
 #latest-products{
     width: 80%;
-    margin: 50px auto;
+    margin: 2rem auto;
 
 }
 #latest-products ul{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap:16px ;
+    gap:1rem ;
     margin: 0;
     padding: 0;
+    list-style: none;
 
 }
+
 
 .food-item{
     background-color: rgb(228, 206, 182);
     border-radius: 6px;
      overflow: hidden; 
+    
 }
 
 .food-item img{
-    height: 240px;
+    height: 15rem;
     width: 100%;/* 사진 크기가 다를때 width 100% 값을 주면 똑같이 늘어남*/
     object-fit: cover;/*크기는 같아졌지만 늘어난 알맞은 사진으로 바꾸기 위해 object-fit: cover*/
 }
 .food-item-content{
-    padding: 16px;
-    text-align: center;
-    /* font-size: 200%; */
+   /* px이 아닌 % 으로 값을 줄 때 부모의 값을 기준으로 받음 부모 300 이면 10% 원하면 자식은30. */
+   /* padding:10%; */
+    /* padding: 16px; */  
+    padding:1em;
+    text-align: center;    
 }
-/* h2{
-    font-size: 2rem;
 
-} */
+.food-item h2{
+margin: 0 0 1rem 0;
+
+
+
+}
+
 .btn{
      background-color: rgb(228, 157, 44);
      color: white;
      border-radius: 4px;
-     padding: 8px 24px;
+     padding: 0.5rem 1.5rem;
 }
 .btn:hover{
      background-color: rgb(221, 134, 34);
 }
+@media(max-width:48rem) {
+    #main-header nav {
+            display: none;
+        }
+    .menu-btn{
+      display: flex;
+
+    }
+/*  모바일 상태가 되면 텍스트-> 아이콘 ?
+menu-btn 에서 걸려잇는 flex:none default 값으로 주고,
+미디어 커리에서 원하는 선택자 입력하고 값은 반대로 줌 display: flex  */
+    main h1{
+            font-size:1.5rem ;
+    }
+
+    #latest-products ul{grid-template-columns: 100%;} 
+}/* max-width 너비 breaking point
+    정하고 그 이하로 내려가면 반응형 
+    그리고 바꾸고 싶은 부분 적고 
+        구체적인 css 적용}*/
+    
