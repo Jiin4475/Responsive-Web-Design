@@ -1,0 +1,101 @@
+body{
+    background-color: rgb(188, 218, 245);
+    font-family: sans-serif;
+}
+h1{
+    text-align: center;
+    margin: 2rem;
+    
+}
+
+form{
+    width: 40rem;
+    padding:auto ;
+    background-color: rgb(225, 241, 250);
+    padding: 1rem;
+    box-shadow: 0 2px 8px  rgb(0, 0, 0);
+    border-radius: 6px;
+    
+}
+section{
+    margin-bottom: 1rem;
+
+}
+
+ul{
+    list-style: none;    
+    margin: 0;
+    padding: 0;
+
+}
+label{
+    color: rgb(105, 105, 118);
+    display: block;
+    margin-bottom: 0.5rem 0;
+    
+}
+input,
+textarea,
+select{
+    font: inherit;
+    padding: o.5rem;
+    border: 1px solid rgb(191, 191, 191);
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea{
+    resize: none;
+}
+input,
+textarea,
+select:focus{
+    background-color: rgb(209, 209, 238);
+}
+button{
+    font: inherit;
+    border: 1px solid rgb(51, 67, 100);
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#form-action{
+   text-align: right;
+}
+.btn-filled{
+    background-color: rgb(51, 67, 100);
+        color: white;
+}
+.btn-filled:hover{
+background-color: rgb(69, 89, 129);
+border-color: rgb(69, 89, 129);
+}
+.btn-empty{
+    background-color:transparent;
+    color: rgb(51, 67, 100);
+
+}
+.btn-empty:hover{
+ background-color: rgb(188, 218, 245);
+}
+.inline-control{
+    display: flex;
+}
+.inline-control label{
+    margin: 0;
+    margin-left: 0.5rem;
+}
+.inline-control input{
+    width: auto;
+}
+/*전체에 width 100%  주고 체크박스 동그라미 박스만 다시 고쳐야 할 때
+inline-control{
+    display: flex;
+}
+.inline-control label{
+    margin: 0;
+}
+.inline-control input{
+    width: auto; */
