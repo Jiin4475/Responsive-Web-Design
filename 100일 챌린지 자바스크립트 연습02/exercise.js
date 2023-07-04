@@ -39,4 +39,4 @@ console.dir(pElement);
 pElement.innerText = 'it\'s so hot today';//이게 내가 한 것
 console.log(pElement);
 // pElement.textContent = 'i do not nothing';
-// console.log(pElement);
+// console.log(pElement); 
