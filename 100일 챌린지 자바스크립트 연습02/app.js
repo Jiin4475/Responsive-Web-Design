@@ -1,49 +1,30 @@
-// document.body.children[1].children[0].href = 'https://google.com'
-
-// console.dir()
- //global 전역 변수 
-// alert();
-// window.alert();
-
-let anchorElement = document.getElementById('external-link');
-anchorElement.href = 'https://google.com';
-
-anchorElement = document.querySelector('p a');// p a {color:red; }
-anchorElement.href = 'https://academind.com'; // 이 선택자 조건에일치하는 첫 번째 요소를 알려줌, getbyid 보다 훨씬 탄력적임
-
-//ADD an  Element
-//1. create the new element without writing in HTML
-let newAnchorElement = document.createElement('a');
-newAnchorElement.href = 'https://google.com';
-newAnchorElement.textContent = 'this leeds to Google!!';
+let paragraphElement = document.querySelector('p');
 
 
-//2. Get access to the parent element that should hold the new element 
-let firstParagraph = document.querySelector('p');
-
-//3. Insert the new element into the parent element content 
-//append(); 기존의 children 요소 다음에 추가
-//insert before(); 기존요소 전에 추가 
-firstParagraph.append(newAnchorElement); 
-
-//Remove element
-//1. Select the element should be removed
-let firstH1Element = document.querySelector('h1');
-
-//2.Remove it
-firstH1Element.remove();
-
-// firstH1Element.parentElement.removeChild(firstH1Element);// older browser
-
-//move element 첫 번째 p를 마지막 p 다음으로 옮기기
-//부모요소로 접근= 옮기고 싶음 것을 일단 부모요소에 다시 넣어줌 그러면 자동으로 맨마지막에 넣어줌
- firstParagraph.parentElement.append(firstParagraph);
+function changedParagraphText(event){
+    paragraphElement.textContent = 'clicked!';
+    console.log('paragraph clicked!')
+    console.log(event);
+}
 
 
-// firstParagraph.parentElement.insertBefore(firstParagraph);
+paragraphElement.addEventListener('click',changedParagraphText );
 
 
-//innerHTML = 텍스트와 html tag 들이 접근 가능함
 
-console.log(firstParagraph.innerHTML);
-firstParagraph.innerHTML = 'Hi This is <strong>important!!</strong>.';
+let inputElement = document.querySelector('input');
+function retrieveUserInput(event){
+     //입력된 요소의 값을 가져올려면 value 속성을 써야함
+    //나는 input(enteredText)에 입력되는 내용(value)원해
+    let enteredText = inputElement.value;
+    // let enteredText =event.target.value;
+    //let enteredText = event.data;//가장 최근의 값을 줌
+   
+
+    console.log(enteredText);
+    // console.log(event);
+
+}
+
+
+inputElement.addEventListener('input',retrieveUserInput );
