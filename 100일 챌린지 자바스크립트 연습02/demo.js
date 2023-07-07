@@ -35,6 +35,12 @@ const enteredTextLength = enteredText. length;
 const remainingCharacters = maxAllowedChars - enteredTextLength;
 
 remainingCharsElement.textContent= remainingCharacters;
+
+//글씨의 제한이 60인데 10으로 내려가면 컬러가 달라짐 
+if (remainingCharacters <=  10 ) {
+    remainingCharsElement.classList.add('warning');
+    productNameInputElement.classList.add('warning')
+}
 }
 
 productNameInputElement. addEventListener ( 'input', updateRemainingCharacters) ;
