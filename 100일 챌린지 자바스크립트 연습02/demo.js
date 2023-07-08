@@ -29,18 +29,27 @@ const remainingCharsElement = document. getElementById ( 'remaining-chars');
 const maxAllowedChars = productNameInputElement. maxLength;
 
 function updateRemainingCharacters (event) {
-const enteredText = event. target. value;
-const enteredTextLength = enteredText. length;
+const enteredText = event.target.value;
+const enteredTextLength = enteredText.length;
 
 const remainingCharacters = maxAllowedChars - enteredTextLength;
 
-remainingCharsElement.textContent= remainingCharacters;
+remainingCharsElement.textContent = remainingCharacters;
 
 //글씨의 제한이 60인데 10으로 내려가면 컬러가 달라짐 
-if (remainingCharacters <=  10 ) {
+if (remainingCharacters ===  0 ) {
+    remainingCharsElement.classList.add('error');
+    productNameInputElement.classList.add('error');
+}else if(remainingCharacters <= 10 ){
     remainingCharsElement.classList.add('warning');
-    productNameInputElement.classList.add('warning')
+    productNameInputElement.classList.add('warning');
+    remainingCharsElement.classList.remove('error');
+    productNameInputElement.classList.remove('error');
+}else {
+    //11미만이던 글자갯수가 11로 넘어가면 원상태로 돌아감
+    remainingCharsElement.classList.remove('warning');
+    productNameInputElement.classList.remove('warning');
+  
 }
 }
-
-productNameInputElement. addEventListener ( 'input', updateRemainingCharacters) ;
+productNameInputElement.addEventListener ('input', updateRemainingCharacters);
