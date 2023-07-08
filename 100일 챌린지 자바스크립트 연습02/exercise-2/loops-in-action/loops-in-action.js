@@ -65,3 +65,43 @@ function displayUserData(){
 
 displayUserDataButtonElement.addEventListener('click',displayUserData);
 
+//입력된 숫자를 얻는 것으로 클릭하면 자바 스크립트에서 주사위를 굴려 서 목표 숫자를 유도하거나, 굴리는데 필요한 만큼 자주 굴려야하는데 반드시 1 에서 6사이여야함 
+//statistic / Roll the dice
+
+rollDiceButtonElement = document.querySelector('#statistics button');
+
+//helper
+function rollDice(){
+ return Math.floor(Math.random() * 6) + 1;//Math.floor(): 5.64 =>5
+}
+
+//main
+function deriveNumberOfDiceRolls(){
+const targetNumberInputElement = document.getElementById('user-target-number');
+const diceRollsListElement = document.getElementById('dice-rolls');
+
+const enteredNumber =targetNumberInputElement.value;
+diceRollsListElement.innerHTML = '';
+
+let hasRolledTargetNumber = false;
+let numberOfRolls = 0;
+
+while(!hasRolledTargetNumber){
+    const rolledNumber = rollDice();
+    // if(rolledNumber == enteredNumber){
+    //     hasRolledTargetNumber =true;
+    // }
+    numberOfRolls = numberOfRolls + 1;//++
+    const newRollsListItemElement = document.createElement('li');
+    const outputText = 'Roll' +numberOfRolls + ': '+rolledNumber;
+    newRollsListItemElement.textContent = outputText;
+    diceRollsListElement.append(newRollsListItemElement);
+    hasRolledTargetNumber = rolledNumber == enteredNumber;
+}
+  const outputTotalRollsElement = document.getElementById('put-total-rolls');
+  const outputTargetNumberElement = document.getElementById('output-target-number');
+
+  outputTargetNumberElement.textContent = enteredNumber;
+  outputTotalRollsElement.textContent = numberOfRolls;
+}
+rollDiceButtonElement.addEventListener('click',deriveNumberOfDiceRolls);
