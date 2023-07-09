@@ -1,0 +1,28 @@
+.modal{
+    /*항상 모든 것들 위에 있을 수 있도록*/
+    position: fixed;
+    top: 20%;
+    left: 5%;
+    width: 90%;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    /* display: none;/*why? 이것은 자바스크립트를 통해 보여질 것 이기 때문*/
+} 
+#backdrop{
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.7);
+}
+
+@media(min-width: 48rem){
+    .modal{
+        /*이테두리는 화면 중앙에서 20rem 뺸  값, 모달의 너비는 40rem 으로 고정 */
+        left: calc(50% - 20rem);
+        width: 40rem;
+    }
+}

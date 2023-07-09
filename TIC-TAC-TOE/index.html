@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/overlays.css">
+    <link rel="stylesheet" href="styles/configuration.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <title>Tic Tac Toe</title>
 </head>
 <body>
+  <div id="backdrop"></div>
     <header id="main-header">
         <h1>Play Tic, Tac, Toe</h1>
         <p>Built with HTML, CSS, JavaScript and - of course - lots of love!</p>
     </header>
     <main>
-      <aside>
+      <aside class="modal" id="config-overlay">
  <!-- 추가 탐색을 할 수 있는  -->
       <h2>Choose your name</h2>
 
       <form>
-        <div>
+        <div class="form-control">
           <label id="playername">Player name</label>
           <input type="text" name="playername" id="playername">
         </div>
