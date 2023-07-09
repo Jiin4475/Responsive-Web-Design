@@ -34,4 +34,5 @@ body{
 .btn-alt:hover{
  background-color: rgb(198, 188, 217);
  border-color: transparent;/*border-color:rgb(79,10, 190); 를 지정하지 않으면 기존의 btn:hover 에서 상속되기 때문에 보더컬러를 원하지 않는다면,border-color: transparent 으로 투명 지정해야함 */
+ 
 }
