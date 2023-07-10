@@ -1,5 +1,15 @@
-
 let editedPlayer = 0;
+
+const players =[
+ {
+    name: '',
+    symbol: 'X'
+ },
+ {
+    name: '',
+    symbol: 'O'
+ },
+];//그룹화하기
 
 //overlay 나타나기
 const playerConfigOverlayElement = document.getElementById('config-overlay');
