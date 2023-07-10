@@ -8,13 +8,24 @@ function openPlayerConfig(){
 function closePlayerConfig(){
     playerConfigOverlayElement.style.display = 'none';
     backdropElement.style.display = 'none';
+    formElement.firstElementChild.classList.remove('error');
+    errorsOutputElement.textContent = '';
 }
 //form에 플레이어 저장:양식이 제출되면 실행
 function savePlayerConfig(event){
 //브라우저의 기본 동작을 방해
- event.preventDefault();//페이지 재로드하지 않음
- const formData = new FormData(event.target);
- const enteredPlayerName = formData.get('playername');//직접 사용할 수 있는 내장된 함수 FormData()
- //event는 이 이벤트를 담당한 HTML 요소를 가리키는 타켓속성이 있음
- console.log(enteredPlayerName);
+    event.preventDefault();//페이지 재로드하지 않음
+    const formData = new FormData(event.target);
+    const enteredPlayerName = formData.get('playername').trim();
+    //직접 사용할 수 있는 내장된 함수 FormData()
+    //event는 이 이벤트를 담당한 HTML 요소를 가리키는 타켓속성이 있음
+    //trim(): 공백을 다 지워버림=> 공백을 제출하면 알림이 뜸
+
+    if (!enteredPlayerName){//enteredPlayername === ''
+        event.target.firstElementChild.classList.add('error');
+        errorsOutputElement.textContent = 'Please enter a valid name!';
+        return;//호출한 함수의 실행이 중지됨:여기서 멈춤
+ } 
+
+
 }

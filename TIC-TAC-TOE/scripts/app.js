@@ -5,6 +5,9 @@ const backdropElement = document.getElementById('backdrop');
 //form access 
 const formElement = document.querySelector('form');
 
+//error access
+const errorsOutputElement =document.getElementById('config-error');
+
 //버튼클릭해서 edit 
 const editPlayer1BtnElement = document.getElementById('edit-player-1-btn');
 const editPlayer2BtnElement = document.getElementById('edit-player-2-btn');
