@@ -1,3 +1,6 @@
+
+let editedPlayer = 0;
+
 //overlay 나타나기
 const playerConfigOverlayElement = document.getElementById('config-overlay');
 const backdropElement = document.getElementById('backdrop');
