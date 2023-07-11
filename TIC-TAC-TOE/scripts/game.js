@@ -1,3 +1,23 @@
+function resetGameStatus(){
+    activePlayer = 0;
+    currentRound = 1;
+    gameIsOver = false;
+    gameOverElement.firstElementChild.innerHTML = 'You Won, <span id="winner-name">PLAYER NAME</span> !';
+    gameOverElement.style.display = 'none';
+
+let gameBoardIndex = 0;
+for (let i =0; i < 3; i++ ){
+    for(let j= 0; j< 3; j++){
+        gameData[i][j] = 0;
+        const gameBoardItemElement = gameBoardElement.children[gameBoardIndex];
+        gameBoardItemElement.textContent = '';
+        gameBoardItemElement.classList.remove('disabled');
+        gameBoardIndex++;
+    }
+  }
+}
+
+
 function startNewGame(){
     //유용한 이름을 쓰지 않는 경우는 안 보여줌
     // || or 은 둘 중의 한 플레이어만 이름을 써도 가능
@@ -6,12 +26,15 @@ function startNewGame(){
         alert('Please set custom player names or both players!');
         return;//if 구문에서 하나라도 만족하면 return 해서 1번을 실행시키지 않음 = '이름을 써서 실행시켜라'
     }
+
+    resetGameStatus();
+
     activePlayerNameElement.textContent = players[activePlayer].name;  
     //1.처음 게임필드에서 보이게 함/버튼을 누르면
     gameAreaElement.style.display = 'block'
     }
     
-    
+
      //필드 선택 후 다른 플레이어에게 넘어감
      //activePlayer = 0(첫번째 플레이어)으로 시작, 그래서 if (activePlayer === 0 현재첫번째 플레이어라면) activePlayer = 1(다른 플레이어에게 넘겨줘), else 아니라면 (현재 두번째 플레이어) activePlayer = 0 (첫번째 플레이어한테 넘겨줘)
 function switchPlayer(){
@@ -32,7 +55,7 @@ function switchPlayer(){
 //5.선택한 모든 필드와 자바스크립트코드에서 어떤 필드가 어떤 플레이어에게 속하는지 추적
 function selectGameField(event){
     //우리가 클릭한 요소가 리스트 li 아이템이 아니라면 우리는 아무것도 실행하지 않음: 리스트 필드가 아닌 다른 공간을 클릭 했을 때 
-    if (event.target.tagName !== 'LI'){
+    if (event.target.tagName !== 'LI' || gameIsOver ){
         return;
     }
     const selectedField = event.target;
@@ -58,7 +81,10 @@ function selectGameField(event){
     gameData[selectedRow][selectedColumn] = activePlayer + 1;
 
     const winnerId = checkForGameOver();
-    console.log(winnerId);
+
+    if (winnerId !== 0){
+        endGame(winnerId);
+    }
 
     currentRound = currentRound + 1;
     switchPlayer();
@@ -108,3 +134,16 @@ function selectGameField(event){
         }
         return 0;//0을 반환하는거는 디폴트고 위너가 없다는 것
     }
+
+function endGame(winnerId){
+    gameOverElement.style.display = 'block'
+
+ if (winnerId > 0 ){
+    gameIsOver =true;
+    const winnerName = players[winnerId - 1].name;
+    gameOverElement.firstElementChild.firstElementChild.textContent = winnerName;
+ }else {
+    gameOverElement.firstElementChild.textContent ='it\'s a draw!'
+ }
+ 
+}

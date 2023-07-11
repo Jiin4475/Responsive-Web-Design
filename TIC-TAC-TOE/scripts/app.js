@@ -8,6 +8,7 @@ const gameData = [
 let editedPlayer = 0;
 let activePlayer = 0;//첫번째 요소에 접근
 let currentRound = 1;
+let gameIsOver = false;
 
 //그룹화하기
 const players =[
@@ -32,6 +33,7 @@ const errorsOutputElement =document.getElementById('config-error');
 const gameAreaElement = document.getElementById('active-game');
 //it's your turn 
 const activePlayerNameElement = document.getElementById('active-player-name');
+const gameOverElement = document.getElementById('game-over');
 
 
 //버튼클릭해서 edit 
@@ -45,7 +47,6 @@ const startNewGameBtnElement = document.getElementById('start-game-btn');
 // const gameFieldElements = document.querySelectorAll('#game-board li');
 const gameBoardElement = document.getElementById('game-board');
  
-
 
 editPlayer1BntElement.addEventListener('click',openPlayerConfig);
 editPlayer2BtnElement.addEventListener('click',openPlayerConfig);
