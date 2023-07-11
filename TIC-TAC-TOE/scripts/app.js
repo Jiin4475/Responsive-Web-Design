@@ -31,7 +31,8 @@ const cancelConfigBtnElement = document.getElementById('cancel-config-btn');
 //star new game button 접근
 const startNewGameBtnElement = document.getElementById('start-game-btn');
 //게임필드 접근 모든 list 아이템 선택 
-const gameFieldElements = document.querySelectorAll('#game-board li');
+// const gameFieldElements = document.querySelectorAll('#game-board li');
+const gameBoardElement = document.getElementById('game-board');
 
 
 
@@ -45,7 +46,8 @@ formElement.addEventListener('submit',savePlayerConfig);
 startNewGameBtnElement.addEventListener('click',startNewGame);
 
 
-for(const gameFieldElement of gameFieldElements){
-   gameFieldElement.addEventListener('click',selectGameField);
-   
-};
+// for(const gameFieldElement of gameFieldElements){
+//    gameFieldElement.addEventListener('click',selectGameField);
+// };
+
+gameBoardElement.addEventListener('click',selectGameField);
