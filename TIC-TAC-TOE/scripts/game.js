@@ -27,6 +27,11 @@ function switchPlayer(){
 //4.이미 내부에 기호가 있는지 선택하지 않았는지 확인
 //5.선택한 모든 필드와 자바스크립트코드에서 어떤 필드가 어떤 플레이어에게 속하는지 추적
 function selectGameField(event){
+    //우리가 클릭한 요소가 리스트 li 아이템이 아니라면 우리는 아무것도 실행하지 않음: 리스트 필드가 아닌 다른 공간을 클릭 했을 때 
+    if (event.target.tagName !== 'LI'){
+        return;
+    }
+
     event.target.textContent = players[activePlayer].symbol;
     event.target.classList.add('disabled');//clicked 된 필드는 호버 효과가 사라짐
     switchPlayer();
