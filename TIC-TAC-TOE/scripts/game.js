@@ -6,6 +6,7 @@ function startNewGame(){
         alert('Please set custom player names or both players!');
         return;//if 구문에서 하나라도 만족하면 return 해서 1번을 실행시키지 않음 = '이름을 써서 실행시켜라'
     }
+    activePlayerNameElement.textContent = players[activePlayer].name;  
 
     //1.처음 게임필드에서 보이게 함/버튼을 누르면
     gameAreaElement.style.display = 'block'
@@ -18,7 +19,8 @@ function switchPlayer(){
     }else {
         activePlayer = 0;
     }
-    activePlayerNameElement.textContent = 
+    // 턴이 돌 때마다 이름이 달라짐
+    activePlayerNameElement.textContent = players[activePlayer].name;  
 }
 
 
@@ -32,9 +34,20 @@ function selectGameField(event){
     if (event.target.tagName !== 'LI'){
         return;
     }
+    const selectedField = event.target;
 
-    event.target.textContent = players[activePlayer].symbol;
-    event.target.classList.add('disabled');//clicked 된 필드는 호버 효과가 사라짐
+    selectedField.textContent = players[activePlayer].symbol;
+    selectedField.classList.add('disabled');
+    //clicked 된 필드는 호버 효과가 사라짐
+     
+    //data-col="1" 숫자가 아닌 "문자" 이기 때문에 (-1를) 하면 숫자로 변환함. e.g parseInt(),+(대상앞에),(대상뒤에)-
+    const selectedColumn = selectedField.dataset.col -1;
+    const selectedRow = selectedField.dataset.row -1;
+
+
+    //[3개의 배열 중 하나 ][ 고른 배열의 아이템]
+    gameData[selectedRow][selectedColumn] = activePlayer + 1;
+    console.log(gameData);
     switchPlayer();
     
 }

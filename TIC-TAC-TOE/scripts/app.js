@@ -1,6 +1,14 @@
+const gameData = [
+   [0,0,0],
+   [0,0,0],
+   [0,0,0],
+];
+
+
 let editedPlayer = 0;
 let activePlayer = 0;//첫번째 요소에 접근
 
+//그룹화하기
 const players =[
  {
     name: '',
@@ -10,7 +18,7 @@ const players =[
     name: '',
     symbol: 'O'
  },
-];//그룹화하기
+];
 
 //overlay 나타나기
 const playerConfigOverlayElement = document.getElementById('config-overlay');
