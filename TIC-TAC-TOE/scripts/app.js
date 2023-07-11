@@ -7,6 +7,7 @@ const gameData = [
 
 let editedPlayer = 0;
 let activePlayer = 0;//첫번째 요소에 접근
+let currentRound = 1;
 
 //그룹화하기
 const players =[

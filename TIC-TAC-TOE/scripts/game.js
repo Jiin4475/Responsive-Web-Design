@@ -7,12 +7,13 @@ function startNewGame(){
         return;//if 구문에서 하나라도 만족하면 return 해서 1번을 실행시키지 않음 = '이름을 써서 실행시켜라'
     }
     activePlayerNameElement.textContent = players[activePlayer].name;  
-
     //1.처음 게임필드에서 보이게 함/버튼을 누르면
     gameAreaElement.style.display = 'block'
-}
-//필드 선택 후 다른 플레이어에게 넘어감
-//activePlayer = 0(첫번째 플레이어)으로 시작, 그래서 if (activePlayer === 0 현재첫번째 플레이어라면) activePlayer = 1(다른 플레이어에게 넘겨줘), else 아니라면 (현재 두번째 플레이어) activePlayer = 0 (첫번째 플레이어한테 넘겨줘)
+    }
+    
+    
+     //필드 선택 후 다른 플레이어에게 넘어감
+     //activePlayer = 0(첫번째 플레이어)으로 시작, 그래서 if (activePlayer === 0 현재첫번째 플레이어라면) activePlayer = 1(다른 플레이어에게 넘겨줘), else 아니라면 (현재 두번째 플레이어) activePlayer = 0 (첫번째 플레이어한테 넘겨줘)
 function switchPlayer(){
     if (activePlayer === 0){
         activePlayer = 1 ;
@@ -21,7 +22,7 @@ function switchPlayer(){
     }
     // 턴이 돌 때마다 이름이 달라짐
     activePlayerNameElement.textContent = players[activePlayer].name;  
-}
+    }
 
 
 //1.which field was clicked 
@@ -36,18 +37,74 @@ function selectGameField(event){
     }
     const selectedField = event.target;
 
-    selectedField.textContent = players[activePlayer].symbol;
-    selectedField.classList.add('disabled');
-    //clicked 된 필드는 호버 효과가 사라짐
-     
     //data-col="1" 숫자가 아닌 "문자" 이기 때문에 (-1를) 하면 숫자로 변환함. e.g parseInt(),+(대상앞에),(대상뒤에)-
     const selectedColumn = selectedField.dataset.col -1;
     const selectedRow = selectedField.dataset.row -1;
+     
+    //이미 클릭된 필드를 상대 플레이어가 못 클릭하게 해야 할때
+    //gameData = 0 임 그래서 만약 이미 차지된 필드라면 1또는 2임, 그래서 0이 아니라면 이미 클리되어서 값(1또는 2)을 받았기 때문!!
+    if(gameData[selectedRow][selectedColumn] > 0){
+        alert('Please select an empty field!')
+        return;
+    }
 
-
+    selectedField.textContent = players[activePlayer].symbol;
+    //clicked 된 필드는 호버 효과가 사라짐
+    selectedField.classList.add('disabled');
+    
+     
     //[3개의 배열 중 하나 ][ 고른 배열의 아이템]
+    //어떤 플레이어(1 아니면 2)가 어떤 칸을 눌렀는지 추적 keep track
     gameData[selectedRow][selectedColumn] = activePlayer + 1;
-    console.log(gameData);
+
+    const winnerId = checkForGameOver();
+    console.log(winnerId);
+
+    currentRound = currentRound + 1;
     switchPlayer();
     
-}
+    }
+
+    //위너를 결정하는 법  : ===1 은 플레이어 1임
+    function checkForGameOver(){
+        // checking the rows for equality
+    for(let i= 0; i < 3; i++){
+
+        if (
+            gameData[i][0] > 0 &&
+            gameData[i][0] === gameData[i][1] &&
+            gameData[i][1] === gameData[i][2]
+            ) {
+            return gameData[i][0];
+            }
+    }
+    for(let i= 0; i < 3; i++){
+    //checking the column for equality
+        if (
+            gameData[0][i] > 0 &&
+            gameData[0][i] === gameData[1][i] &&
+            gameData[0][i] === gameData[2][i]
+            ) {
+            return gameData[0][i];
+            }
+    }
+        //Diagonal:top left to bottom right
+    if( gameData[0][0] > 0 &&
+        gameData[1][1]=== gameData[1][1] &&
+        gameData[1][1]===gameData[2][2] 
+        ) {
+        return gameData[0][0];
+        }
+
+        //Diagonal:bottom left to top right
+    if( gameData[2][0 ] > 0 &&
+        gameData[2][0]=== gameData[1][1] &&
+        gameData[1][1]===gameData[0][2]
+        ) {
+        return gameData[2][0];
+        }
+        if(currentRound === 9 ){//9라운드라면 9개칸을 다 클릭했다는 사실 = 무승부
+         return - 1;//
+        }
+        return 0;//0을 반환하는거는 디폴트고 위너가 없다는 것
+    }
