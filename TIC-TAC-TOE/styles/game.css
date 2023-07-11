@@ -1,7 +1,7 @@
 #active-game{/*버튼을 클릭해야 게임을 보여줌*/
     text-align: center;
     margin: 2rem 0 5rem 0;/*top right bottom left*/
-    /* display: none;*/
+    display: none;
 } 
 
 #game-over{

@@ -28,6 +28,12 @@ const editPlayer2BtnElement = document.getElementById('edit-player-2-btn');
 //캔슬버튼을 누르면 오버레이 사라짐
 const cancelConfigBtnElement = document.getElementById('cancel-config-btn');
 
+//star new game button 접근
+const startNewGameBtnElement = document.getElementById('start-game-btn');
+
+//active-game 
+const gameAreaElement = document.getElementById('active-game');
+
 
 editPlayer1BtnElement.addEventListener('click',openPlayerConfig);
 editPlayer2BtnElement.addEventListener('click',openPlayerConfig);
@@ -36,3 +42,4 @@ cancelConfigBtnElement.addEventListener('click',closePlayerConfig);
 backdropElement.addEventListener('click',closePlayerConfig);
 
 formElement.addEventListener('submit',savePlayerConfig);
+startNewGameBtnElement.addEventListener('click',startNewGame);
