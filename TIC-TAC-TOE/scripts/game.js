@@ -18,6 +18,7 @@ function switchPlayer(){
     }else {
         activePlayer = 0;
     }
+    activePlayerNameElement.textContent = 
 }
 
 

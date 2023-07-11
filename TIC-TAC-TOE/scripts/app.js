@@ -21,6 +21,8 @@ const formElement = document.querySelector('form');
 const errorsOutputElement =document.getElementById('config-error');
 //active-game 
 const gameAreaElement = document.getElementById('active-game');
+//it's your turn 
+const activePlayerNameElement = document.getElementById('active-player-name');
 
 
 //버튼클릭해서 edit 
@@ -33,7 +35,7 @@ const startNewGameBtnElement = document.getElementById('start-game-btn');
 //게임필드 접근 모든 list 아이템 선택 
 // const gameFieldElements = document.querySelectorAll('#game-board li');
 const gameBoardElement = document.getElementById('game-board');
-
+ 
 
 
 editPlayer1BntElement.addEventListener('click',openPlayerConfig);
