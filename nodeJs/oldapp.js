@@ -1,3 +1,5 @@
+
+//방법1
 //이함수를 호출하면 노드js에서 제공하는 유틸리티메서드 속성을 받음
 const http = require('http');
 
@@ -26,5 +28,22 @@ const server = http.createServer(handleRequest);
 
 //포트번호에서 수신대기/ 일반적으로 기본(80)이 아닌 포트(3000) 로컬시스템에서 개발중인 것이 다른 서버와 충돌되지 않는지 확인-다 괜찮으면 80,433으로 교체
 server.listen(3000);
+
+//방법2
+const  express = require('express');
+
+const app = express();
+
+// 방법1
+app.get('/currenttime', function(req,res){
+res.send('<h1>' + new Date().toISOString() + '</h1>');
+});
+
+
+app.get('/', function(req,res){
+res.send('<h1>Hello World!</h1>');
+});
+
+app.listen(3000);
 
 

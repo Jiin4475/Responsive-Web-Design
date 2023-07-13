@@ -1,19 +1,25 @@
-const http = require('http');
+const  express = require('express');
 
-function handleRequest(request, response){
-    
-    if(request.url === '/currenttime'){
-        response.statusCode = 200;
-        response.end('<h1>' + new Date().toISOString() + '</h1>');
-    }else if(request.url === '/'){
-        response.statusCode = 200;
-        response.end('<h1>Hello World!</h1>');
-    }
+const app = express();
 
-};
+app.use(express.urlencoded({extended: false}));// 들어오는 요청을 처리함
 
-const server = http.createServer(handleRequest);
+// 방법1
+app.get('/currenttime', function(req,res){
+res.send('<h1>' + new Date().toISOString() + '</h1>');
+});
 
-server.listen(3000);
+
+app.get('/', function(req,res){
+    res.send('<form action="/store-user" method="POST"><label>Your Name</label><input type="text" name="username"><button>Submit</button></form>');
+});
+
+app.post('/store-user', function(req,res){
+const userName = req.body.username;
+console.log(userName);
+res.send('<h1>Username stored!</h1>');
+});
+
+app.listen(3000)
 
 
