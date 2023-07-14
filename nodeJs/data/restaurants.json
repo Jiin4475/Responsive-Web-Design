@@ -1,23 +1,23 @@
 [
     {
-        "name": "유지인",
-        "address": "NW2 3PY",
-        "cuisine": "KOREAN",
-        "website": "https://www.google.com/",
-        "description": "gggg"
+      "name": "Test",
+      "address": "Teststreet 5, Testcity",
+      "cuisine": "Italian",
+      "website": "https://mytest.com",
+      "description": "It's awesome!"
     },
     {
-        "name": "김강지",
-        "address": "평택",
-        "cuisine": "anything",
-        "website": "https://www.google.com/",
-        "description": "100"
+      "name": "Test 2",
+      "address": "Teststreet 10, Testcity 2",
+      "cuisine": "Indian",
+      "website": "https://mygreattest.com",
+      "description": "It's also amazing!"
     },
     {
-        "name": "restaurant 3",
-        "address": "NW2 3PY",
-        "cuisine": "KOREAN",
-        "website": "https://www.google.com/",
-        "description": "10000000PERFECT!"
+      "name": "Restaurant 3",
+      "address": "Awesomestreet 5, Mycity",
+      "cuisine": "German",
+      "website": "https://awesome.com",
+      "description": "It's amazing! Of course!"
     }
-]
+  ]
