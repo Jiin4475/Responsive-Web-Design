@@ -1,0 +1,16 @@
+[
+    {
+        "name": "유지인",
+        "address": "NW2 3PY",
+        "cuisine": "KOREAN",
+        "website": "https://www.google.com/",
+        "description": "gggg"
+    },
+    {
+        "name": "김강지",
+        "address": "평택",
+        "cuisine": "anything",
+        "website": "https://www.google.com/",
+        "description": "100"
+    }
+]
