@@ -12,5 +12,12 @@
         "cuisine": "anything",
         "website": "https://www.google.com/",
         "description": "100"
+    },
+    {
+        "name": "restaurant 3",
+        "address": "NW2 3PY",
+        "cuisine": "KOREAN",
+        "website": "https://www.google.com/",
+        "description": "10000000PERFECT!"
     }
 ]
