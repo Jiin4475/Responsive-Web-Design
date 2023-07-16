@@ -1,0 +1,41 @@
+
+#main-info{
+   display: flex;
+   flex-direction: column;
+   margin: 15rem; ;
+   margin-left:10rem ;
+   position: relative; /*부모요소 */
+}
+#main-info h1{
+    font-weight: bold;
+    font-size: 5rem;
+    margin:10px 0 10px 0;
+}
+#main-info p{
+    font-size:1.2rem ;
+}
+#sugar-img img{/*info 의 슈가시럽 이미지만*/ 
+    display: inline;
+    width: 30%;
+    height: auto;
+    margin:0 auto 300px auto;
+    padding-left: 60vw;
+    position: absolute;/*자식요소 이미지 동일 선상에 둘 수 있음*/
+    margin-top: -20vh;
+
+}
+
+#main-img ul{
+    padding-left: 0;
+}
+.main-img-list li{
+    list-style: none;
+}
+.main-img-list img{
+    width: 100%;
+    height: auto;
+    display: flex;
+    height: 70vh; 
+    object-fit: cover;
+}  
+
