@@ -1,34 +1,38 @@
-
+/* body{
+    overflow: hidden;
+} */
 #main-info{
    display: flex;
    flex-direction: column;
-   margin: 15rem; ;
-   margin-left:10rem ;
+   margin:14rem 0px 10rem 10rem; 
    position: relative; /*부모요소 */
+}
+.container{/*화면크기 조정시 바뀌는 박스 고정 방법 */
+    /*div class="container"*/
+    width: 1000px;
 }
 #main-info h1{
     font-weight: bold;
     font-size: 5rem;
-    margin:10px 0 10px 0;
+    margin:10px 0px;
 }
 #main-info p{
-    font-size:1.2rem ;
+    font-size:1rem ;
+    font-weight: bold;
+    margin-top: 10px;
 }
 #sugar-img img{/*info 의 슈가시럽 이미지만*/ 
     display: inline;
-    width: 30%;
+    max-width: 100%;
+    width: 20%;
     height: auto;
-    margin:0 auto 300px auto;
-    padding-left: 60vw;
-    position: absolute;/*자식요소 이미지 동일 선상에 둘 수 있음*/
-    margin-top: -40vh;
-
+    margin:-12vh 0px 0px 50vw;
+    /* padding-left: 60vw; */
+    position: absolute;/*자식요소 이미지 동일 선상에 둘 수 있음*/   
 }
 
 #main-img ul{
     padding-left: 0;
-}
-.main-img-list li{
     list-style: none;
 }
 .main-img-list img{
@@ -37,5 +41,70 @@
     display: flex;
     height: 70vh; 
     object-fit: cover;
-}  
+} 
+#main-welcome, #main-content4{
+    position: relative;
+    
+}
+.main-welcome-text{
+    width: 700px;
+    position: absolute;
+    top: 40%;
+    left:4% ;
+    color: white;
+    font-size:1.8vh;
+    line-height: 28px;
+    background-color: rgb(0, 0, 0,0.2);
+    padding: 15px;
+    border-radius: 8px;
+  
+}
+.main-welcome-text span{
+    margin-bottom: 20px;
+}
 
+#main-content2, #main-content3, #main-content4{
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: row-reverse;
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0px 64px 0px 64px;
+}
+
+#main-content2 img , #main-content3 img, #main-content4 img{
+    width: 45%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+}
+#main-content2-text, #main-content3-text, #main-content4-text{
+    width: 45%;
+    text-align: center; 
+    text-decoration: none;
+    color: black;
+    font-size: 1.8vh;
+
+}
+#main-content2-text h2 , #main-content3-text h2, 
+#main-content4-text h2 {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 2.5vh;
+    margin-bottom: 100px;  
+    margin: 0 auto 20px auto; 
+}
+#main-content2-text:hover ,#main-content3-text:hover, #main-content4-text:hover {
+   background-color:rgb(242, 240, 239);
+    color: rgb(0, 0, 0);
+    padding: 15px 5px;
+    border-radius: 20px; 
+}
+
+#main-content3{
+    flex-direction: row;
+}
+#main-content3 img{
+    height: 600px;
+}
