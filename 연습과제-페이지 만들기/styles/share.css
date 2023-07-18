@@ -42,7 +42,7 @@ body{
 .nav-list a{
     text-decoration: none;
     color: black;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding-left: 4rem; 
 }
 #nav-list-1{
@@ -86,12 +86,12 @@ button{
 } */
 
 footer{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: rgb(0, 0, 0);
     text-align: center;
 }
 h2{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin: 10rem auto 1rem auto;
 }
 #icons{
@@ -114,7 +114,7 @@ h2{
 
 .info-list{
     margin: 15px auto;
-    cursor: pointer;
+    font-size: 1rem;
 }
 .info-list:hover{
     width: 30%;
