@@ -1,6 +1,6 @@
 #roasters-img{
     width: 100%;
-    height: 707px;
+    height: 650px;
     object-fit: cover;
 }
 #roasters-text h1{
@@ -11,8 +11,8 @@
     padding: 0;
     font-family: serif;
     font-weight: bold;
-    font-size: 4.5rem;
-    color: rgb(180, 110, 40);
+    font-size: 3.5rem;
+    color: rgb(255, 255, 255);
     
 }
 #beans-main{

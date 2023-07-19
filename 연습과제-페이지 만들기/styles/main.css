@@ -5,7 +5,7 @@
 #main-info{
    display: flex;
    flex-direction: column;
-   margin:10rem 0px 10rem 10rem; 
+   margin:12rem 0px 12rem 10rem; 
    position: relative; /*부모요소 */
 }
 .container{/*화면크기 조정시 바뀌는 박스 고정 방법 */
@@ -73,6 +73,9 @@
     padding: 0px 64px 0px 64px;
 }
 
+#main-welcome img {
+    height: 760px;
+}
 #main-content2 img , #main-content3 img, #main-content4 img{
     width: 45%;
     height: auto;
@@ -84,7 +87,8 @@
     text-align: center; 
     text-decoration: none;
     color: black;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    line-height: 25px;
 
 }
 #main-content2-text h2 , #main-content3-text h2, 

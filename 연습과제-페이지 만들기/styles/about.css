@@ -4,7 +4,7 @@
 }
 #content-01-img img{
     width: 100%;
-    height: auto;
+    height: 650px;
     object-fit: cover;
 }
 
@@ -18,11 +18,11 @@
     font-family: serif;
     font-weight: bold;
     font-size: 3.5rem;
-    color: rgb(180, 110, 40);
+    color: rgb(255, 255, 255);
 }
 #content-01-text02 h2{
     text-align: center;
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 40px;   
 
 }
@@ -31,8 +31,8 @@
     width: 700px;
     text-align: center;
     margin: 20px auto;
-    font-size: 1.5rem;
-    line-height: 40px;
+    font-size: 1.2rem;
+    line-height: 35px;
 }
 #content-01-text03, #content-01-text04{
     display: flex;

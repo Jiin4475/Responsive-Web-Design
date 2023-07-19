@@ -45,6 +45,12 @@ body{
     font-size: 1.2rem;
     padding-left: 4rem; 
 }
+.nav-list a:hover{
+    text-decoration: underline;
+    color: rgb(184, 159, 132);
+    font-weight: bolder;
+      
+}
 #nav-list-1{
     padding-left: 0; 
 }
@@ -115,6 +121,11 @@ h2{
 .info-list{
     margin: 15px auto;
     font-size: 1rem;
+    
+}
+.info-list a{
+    color: black;
+    text-decoration: none;
 }
 .info-list:hover{
     width: 30%;
