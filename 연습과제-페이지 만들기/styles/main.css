@@ -7,6 +7,7 @@
    flex-direction: column;
    margin:12rem 0px 12rem 10rem; 
    position: relative; /*부모요소 */
+   height: 800px;
 }
 .container{/*화면크기 조정시 바뀌는 박스 고정 방법 */
     /*div class="container"*/
@@ -74,7 +75,7 @@
 }
 
 #main-welcome img {
-    height: 760px;
+    height: 800px;
 }
 #main-content2 img , #main-content3 img, #main-content4 img{
     width: 45%;
