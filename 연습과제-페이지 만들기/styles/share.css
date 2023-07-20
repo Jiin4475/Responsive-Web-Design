@@ -37,9 +37,12 @@ body{
 }
 .nav-list{
     list-style: none;
-    
+    text-decoration: none;
 }
-.nav-list a{
+.nav-list-aside{
+    list-style: none;
+}
+.nav-list a, .nav-list-aside a{
     text-decoration: none;
     color: black;
     font-size: 1.2rem;
@@ -69,27 +72,23 @@ body{
 
 #side-drawer{
     display: none;
+    /* position: fixed; */
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin: 100px auto;
+    background-color: rgb(255, 255, 255);
 } 
-button{
+#side-drawer ul,#side-drawer a{
+    padding: 0;
+}
+#side-drawer a{
+    font-size: 80px;
+}
+
+#drawer-btn{
     display: none;
 }
-/* #drawer-btn{
-    display: flex;
-    flex-direction:column ;
-    width: 2rem;
-    height: 2rem;
-    justify-content: space-around;
-    padding: 0.1rem;
-    border: none;
-    cursor: pointer;
-    
-}
-#drawer-btn span{
-    width: 3rem;
-    height: 3px;
-    background-color: rgb(0, 0, 0);
- 
-} */
 
 footer{
     font-size: 1.2rem;
@@ -143,4 +142,22 @@ h2{
     font-family:'Nanum Gothic', sans-serif;
     margin-top: 2rem;
     font-size: 0.9rem;
+}
+@media(max-width: 870px){
+    
+    .nav-logo{
+        display: none;
+        width: 3rem;
+        height: 3rem;
+        align-items: center;
+    }
+  
+    .nav-list a{
+        display: none;
+        text-decoration: none;
+        color: black;
+        font-size: 1.2rem;
+        padding-left: 4rem; 
+    }
+    
 }
