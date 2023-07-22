@@ -1,0 +1,46 @@
+#main-img img{
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+    opacity: 0.85;
+}
+#main-img-text h1{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    padding: 0;
+    font-family: serif;
+    font-weight: bold;
+    font-size: 3.5rem;
+    color: rgb(255, 255, 255);
+}
+.stores{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    margin: 1px auto;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+.stores img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin-right: 45px;
+    border-radius: 20px;
+}
+.stores-text{
+    width: 550px;
+    height: 300px;   
+    margin-top: 80px;
+}
+.stores-text h2{
+    font-size: 1.2rem;
+    margin-top: 0;
+}
+.stores-text p{
+    font-size: 0.8rem;
+}

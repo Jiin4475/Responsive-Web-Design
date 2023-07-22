@@ -1,0 +1,163 @@
+html {
+    scroll-behavior: smooth;
+}
+body{
+    background-color: white;
+    font-family: 'Nanum Myeongjo', sans-serif;
+    margin: 0;
+}
+
+#nav p{
+    top: 0;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    font-size: 0.9rem; 
+    background-color: rgb(240, 238, 238);
+    padding: 10px 10px;
+}
+.nav-logo{
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+}
+#nav-items ul{ 
+    /* max-width: 1200px; 왜 쓰는지 모르겟음*/
+    position: fixed;
+    width: 90%;
+    height: 2rem;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    padding-left: 0px;
+    margin-top: 40px;
+    box-sizing: border-box;
+    z-index: 1;
+
+}
+.nav-list{
+    list-style: none;
+    text-decoration: none;
+}
+.nav-list-aside{
+    list-style: none;
+}
+.nav-list a, .nav-list-aside a{
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+    padding-left: 4rem; 
+}
+.nav-list a:hover{
+    text-decoration: underline;
+    color: rgb(184, 159, 132);
+    font-weight: bolder;
+      
+}
+#nav-list-1{
+    padding-left: 0; 
+}
+#nav-icon{
+  list-style: none;
+  left: 90%;
+  width: 1000px;
+} 
+.nav-icon img{
+    color: black;
+    width: 30px;
+    height: auto;
+    padding: 10px;
+    
+}
+
+#side-drawer{
+    display: none;
+    /* position: fixed; */
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin: 100px auto;
+    background-color: rgb(255, 255, 255);
+} 
+#side-drawer ul,#side-drawer a{
+    padding: 0;
+}
+#side-drawer a{
+    font-size: 80px;
+}
+
+#drawer-btn{
+    display: none;
+}
+
+footer{
+    font-size: 1.2rem;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+h2{
+    font-size: 1.2rem;
+    margin: 10rem auto 1rem auto;
+}
+#icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 15%;
+    margin: 10px auto 5rem auto;
+    opacity: 0.7;
+}
+.icons img{
+ width: 30px;
+ height: auto;
+}
+#info-lists{
+  list-style: none;
+  margin: 5rem auto;
+  padding-left: 0;
+}
+
+.info-list{
+    margin: 15px auto;
+    font-size: 1rem;
+    
+}
+.info-list a{
+    color: black;
+    text-decoration: none;
+}
+.info-list:hover{
+    width: 30%;
+    color:rgb(0, 0, 0) ;
+    background-color:rgb(242, 240, 239);
+    font-weight: bolder;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+#slogan{
+    margin: 5rem;
+}
+#slogan p{
+    font-family:'Nanum Gothic', sans-serif;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+@media(max-width: 870px){
+    
+    .nav-logo{
+        display: none;
+        width: 3rem;
+        height: 3rem;
+        align-items: center;
+    }
+  
+    .nav-list a{
+        display: none;
+        text-decoration: none;
+        color: black;
+        font-size: 1.2rem;
+        padding-left: 4rem; 
+    }
+    
+}
