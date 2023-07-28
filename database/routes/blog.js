@@ -34,4 +34,21 @@ router.post('/posts',async function(req,res){
     ]);
     res.redirect('/posts');//포스트 저장 할 때마다 post 화면으로 돌아감
 })
+
+router.get('/posts/:id', async function(req, res){
+    const query = `
+    SELECT posts.*, authors.name AS author_name, authors.email AS author_email FROM posts
+    INNER JOIN authors ON posts.author_id = authors.id
+    WHERE posts.id = ?
+    `  
+    
+   const [posts] = await db.query(query, [req.params.id]);
+   
+   if(!posts || posts.length === 0 ){
+     return res.status(404).render('404');
+   }
+   
+    res.render('post-detail', { post: posts[0] });
+});
+
 module.exports = router;
