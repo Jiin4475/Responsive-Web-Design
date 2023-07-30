@@ -22,7 +22,6 @@ a{
 }
 .local-nav{
     height: 52px;
-    border-bottom: 1px solid #ddd;
    
 }
 .global-nav-links,
@@ -36,6 +35,9 @@ a{
 .global-nav-links{
     justify-content: space-between;
 }
+.local-nav-links{
+    border-bottom: 1px solid #ddd;
+}
 
 .local-nav-links .product-name{
     margin-right: auto;/*auto 를 사용해서 우측으로 nav들 치우침*/
@@ -47,4 +49,34 @@ a{
 }
 .local-nav-links a:not(.product-name){
     margin-left: 2em;
+}
+
+.container-logo {  
+   align-items: center;
+   display: flex;
+   justify-content: center;
+   margin-top: 22px;
+}
+#container-logo-feature{
+    position: relative;
+    margin: auto;
+    width: 500px;
+    height: auto;
+  
+}
+.container-logo h1{
+    position: absolute;
+    font-weight: 600;
+    font-size: 14vw;
+    text-align: center;
+
+}
+.container-logo-info{
+    display: block;
+    text-align: center;
+    width: 60%;
+    margin: 20px auto;
+    font-size:3vh;
+    font-weight: 600;
+    
 }
