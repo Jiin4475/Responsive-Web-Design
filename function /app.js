@@ -22,11 +22,11 @@ for (let i = 0; i < users.length; i++ ){
 }
 console.log(temp_users);
 //2. 30세 이상인 users names 를 수집한다.
-let names = [];
-for (let i = 0; i < temp_users.length; i++){
-    names.push(temp_users[i].name);
-}
-console.log(names);
+// let names = [];
+// for (let i = 0; i < temp_users.length; i++){
+//     names.push(temp_users[i].name);
+// }
+// console.log(names);
 
 //3. 30세 미만인 users를 수집한다.
 
@@ -40,11 +40,11 @@ console.log(temp_users);
 
 //4. 30세 미만인 users의 ages 는 수집한다.
 
-let ages = [];
-for (let i = 0; i < temp_users.length; i++){
-    ages.push(temp_users[i].age);
-}
-console.log(ages);
+// let ages = [];
+// for (let i = 0; i < temp_users.length; i++){
+//     ages.push(temp_users[i].age);
+// }
+// console.log(ages);
 
 
 //2._filter, -map 으로 리팩토링 
@@ -58,15 +58,58 @@ for (let i = 0; i < list.length; i++ ){
   }
   return new_list;
 }
+
+
+// _map
+function _map(list, mapper){
+
+    let new_list = [];
+for (let i = 0; i < list.length; i++){
+    new_list.push(mapper(list[i]));
+}
+return new_list;
+}
+
+//---30세 이상의 이름 찾기
+var over_30 =_filter(users, function(user){return user.age >=30; });
+console.log(over_30);
+
+var names = _map(over_30, function(user) {
+return user.name;
+});
+console.log(names);
+
+
+//---30세 미만
+var under_30 = _filter(users, function(user){return user.age < 30; });
+console.log(under_30);
+
+var ages = _map(under_30, function(user) {
+    return user.age;
+    });
+console.log(ages);
+
+//수정 => 30세이상의 유저를 거르는 인자 1, map 을 돌면서 해당하는 유저들의 이름을 걸러줌
+console.log(
+    _map (
+        _filter(users, function(user){return user.age >=30; }), 
+        function (user) {return user.name}));
+
+console.log(
+    _map (
+        _filter(users, function(user){return user.age < 30; }), 
+        function (user) {return user.age}));
+
+
 //30세이상
-console.log(
-    _filter(users, function(user){return user.age >=30; }));
-//30세 미만
-console.log(
-    _filter(users, function(user){return user.age < 30; }));
+// console.log(
+//     _filter(users, function(user){return user.age >=30; }));
+// //30세 미만
+// console.log(
+//     _filter(users, function(user){return user.age < 30; }));
 //예시
-console.log(_filter([1,2,3,4], function(num) { return num % 2; }))
-console.log(_filter([1,2,3,4], function(num) { return !(num % 2); }))
+// console.log(_filter([1,2,3,4], function(num) { return num % 2; }))
+// console.log(_filter([1,2,3,4], function(num) { return !(num % 2); }))
 
 
 
