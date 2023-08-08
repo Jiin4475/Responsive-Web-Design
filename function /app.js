@@ -49,25 +49,51 @@ console.log(temp_users);
 
 //2._filter, -map 으로 리팩토링 
 
+// function _filter(list, predi){
+// var new_list = [];
+// for (let i = 0; i < list.length; i++ ){
+//     if(predi(list[i])) {
+//         new_list.push(list[i]);
+//     }
+//   }
+//   return new_list;
+// }
+
+
+// // _map
+// function _map(list, mapper){
+
+//     let new_list = [];
+// for (let i = 0; i < list.length; i++){
+//     new_list.push(mapper(list[i]));
+// }
+// return new_list;
+// }
+
 function _filter(list, predi){
-var new_list = [];
-for (let i = 0; i < list.length; i++ ){
-    if(predi(list[i])) {
-        new_list.push(list[i]);
+    var new_list = [];
+    _each(list, function(val){
+        if(predi(val)) new_list.push(val);
+    });
+        return new_list;
     }
-  }
-  return new_list;
-}
-
-
-// _map
-function _map(list, mapper){
-
-    let new_list = [];
-for (let i = 0; i < list.length; i++){
-    new_list.push(mapper(list[i]));
-}
+ // _map (수정)
+ function _map(list, mapper){
+    var new_list = [];
+    _each(list, function(val){
+    new_list.push(mapper(val));
+    });
 return new_list;
+}
+
+
+
+//명령적인 코드 제거- 중복 제거
+function _each(list, iter) {
+    for (var i = 0; i < list.length; i++){
+        iter(list[i]);
+    }
+    return list;
 }
 
 //---30세 이상의 이름 찾기
@@ -115,6 +141,20 @@ console.log(
 
 //3. each 만들기
   //1. -each로 -map, -filter 중복제거
+//=>map, filter는 메서드(객체지향프로그램)임 순수함수가 아님=> 해당클래스의 인스턴스에서만 사용 가능= array 가 아니면 쓸 수 없음 => 그렇다면 array 같은 객체에서 쓸 수 있다? =? jquery 
+console.log(
+    [1,2,3].map(function(val){
+        return val * 2;
+    })
+);
+
+
+console.log(
+    [1,2,3].filter(function(val){
+        return val % 2;
+    })
+);
+
 
   //2. 외부 다형성 
      //1. array_like, arguments, document.querySelectorAll
