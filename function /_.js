@@ -39,11 +39,23 @@ function _filter(list, predi){
     }
 
 
+    function _is_object(obj) {// object 가 맞는지 확인하는 함수
+        return typeof obj == 'object' && !!obj;
+    }
+
+    function _keys(obj){
+        return _is_object(obj) ? Object.keys(obj) :[];
+    }
+    
+
+    var _length = _get('length');
+
 
     //명령적인 코드 제거- 중복 제거
     function _each(list, iter) {
-        for (var i = 0; i < list.length; i++){
-            iter(list[i]);
+        var keys = _keys(list);
+        for (var i = 0, len = keys.length; i < len;  i++){
+            iter(list[keys[i]]); 
         }
         return list;
     }

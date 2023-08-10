@@ -331,3 +331,58 @@ _go(1,
         _go(users,
         _filter(user => user.age < 30),
          _map(_get('age')), console.log);
+
+//6. _each 오ㅣ부 다향성 높ㅣㅣ
+    //1. _each null 넣어도 에러 안 나기
+ _each (null, console.log)    
+ console.log(_filter(null, function(v){ return v;}))
+
+// _go(null,
+//     _map(function(v) { return v % 2; }),
+//     _filter(function(v){ return v * v; }),
+//     console.log);
+
+
+    //2. _keys 만들기(어떤 형태의 값이 들어오던지)
+    //3. _keys 에서도 _is_object 인지 검사하여 null 에러 안나기.
+    console.log(_keys({name:'ID', age:33 }));
+    console.log(_keys([1,2,3,4]));
+    console.log(_keys(10));
+    console.log(_keys(null));//=> 이부분을 안전하게 만들기
+
+    // function _is_object(obj) {// object 가 맞는지 확인하는 함수
+    //     return typeof obj == 'object' && !!obj;
+    // }
+
+    // function _keys(obj){
+    //     return _is_object(obj) ? Object.keys(obj) :[];
+    // }
+    
+    //4. _each 외부 다gud성 높이기
+    _each({
+        13: 'ID',
+        19: 'HD',
+        29: 'YD'
+    }, function(name) {
+        console.log(name);
+    });
+   console.log( _map({
+        13: 'ID',
+        19: 'HD',
+        29: 'YD'
+    }, function(name) {
+       return name.toLowerCase(); 
+    }));
+
+
+    _go({
+        1: users[0],
+        3: users[2],
+        5: users[4] 
+        },
+         console.log,
+    _map(function(user) {
+        return user.name.toLowerCase();
+        }),
+      console.log);
+    
