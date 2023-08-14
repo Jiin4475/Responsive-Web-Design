@@ -7,8 +7,8 @@ function User (name, age) {
     }
 }
 
-let user5 = new User('Han', 40);
-user5.sayName();
+// let user7 = new User('Han', 40);
+// user7.sayName();
 
 
 //객체로 바꾸기
@@ -544,3 +544,776 @@ console.log(user02);//Jane
  let user04 = {name: 'Mike', age:30, gender: 'female'};
  let {name, age, gender='male'} = user04; //gender=> undefined, gender= male
  console.log(user04);
+
+ //나머지 매개변수, 전개 구문
+
+ // ...
+//  function showName(name) {
+//     console.log(name);
+//  }
+//  showName('Mike');// Mike
+//  showName('Mike', 'Tom');// Mike, ?
+
+
+ //함수의 인수를 얻는 방법
+ //1. arguments
+//함수로 넘어 온 모든 인수에 접근
+//함수내에서 이용 가능한 지역 변수
+//length/index 
+//Array 형태의 객체
+//배열의 내장 메서드 없음(forEach, map)
+
+
+function showName(name){
+    console.log(arguments.length);
+    console.log(arguments[0]);
+    console.log(arguments[1]);
+};
+showName('Mike', 'Tom');
+ 
+
+//2. 나머지 매개변수 쓰기: 정해지지 않은 갯수의 인수를 배열로 나타냄
+
+function showName(...names){
+console.log(names);
+};
+
+showName();//[]
+showName('Mike');//[Mike]
+showName('Mike', 'Tom');//[Mike, Tom]
+
+// 나머지 매개변수 예제 : 전달 받은 모든 수를 더해야함 (더하려면 reduce)
+function add(...numbers){//=> 배열
+   let result = numbers.reduce((prev, cur) =>  prev+ cur);
+    console.log(result);
+}
+
+add(1,2,3);
+add(1,2,3,4,5,6,7,8,9,10);
+
+//예제 2 : 유저 객체를 만들어주는 생성자 함수
+
+function User(name, age, ...skills){
+    this.name = name;
+    this.age = age;
+    this.skills = skills;
+};
+
+ const user8 = new User('Mike', 30,'Css');
+ const user9 = new User('Tom', 20,'Js', 'React');
+ const user10 = new User('Jane', 10,'English');
+
+
+ console.log(user8);
+ console.log(user9);
+ console.log(user10);
+
+
+ //전개 구문 (spread syntax) : 배열
+
+//  let arr4 = [1,2,3];
+//  let arr5 = [4,5,6];
+
+//  let result09 = [...arr4, ...arr5];
+//  console.log(result09);//[1,2,3,4,5]
+
+ //전개구문: 객체
+//  let user05 = {name:'Mike'};
+//  let mike = {...user05, age:30};
+
+//  console.log(mike);//{name: 'Mike', age: 30} Object.assign({}, ) 을 쓸 필요 없음
+
+ //전개 구문: 복제
+
+ let arr4 = [1,2,3];
+ let arr5 = [...arr4];//[1,2,3]
+
+ let user05 = {name:'Mike', age: 30};
+ let user06 = {...user05};
+
+ user06.name = 'Tom';
+ console.log(user05.name);// Mike
+ console.log(user06.name);//Tom
+
+//전개 구문 예제
+//arr11을 [4,5,6,1,2,3]으로
+
+let arr10 = [1,2,3];
+let arr11 = [4,5,6];
+
+//내가 한 방법
+// let result10 = [...arr11,...arr10];
+// console.log(result10);//[4, 5, 6, 1, 2, 3]
+
+//예시 답안
+arr11.reverse().forEach((num)=>{
+   arr10.unshift(num);
+});
+// console.log(arr10);//[4, 5, 6, 1, 2, 3] => x before .reverse()
+console.log(arr10);//[4, 5, 6, 1, 2, 3]
+
+let user11 = {name:'Mike'};
+let info = {age:30};
+let fe = ['Js','React'];
+let lang = ['korean', 'English'];
+
+user11 = Object.assign({}, user11,info, {
+    skills: [],
+});
+
+// //skills 에 넣기(전개 구문 안 쓰고)
+// fe.forEach((item) => {
+//     user11.skills.push(item);
+// });
+// lang.forEach((item) => {
+//     user11.skills.push(item);
+// });
+// console.log(user11);//{name: 'Mike', age: 30, skills: Array(4)}
+
+
+//전개구문 이용하기
+
+user11 = {
+    ...user11,
+    ...info,
+    skills:[...fe,...lang],
+};
+
+ console.log(user11);//{name: 'Mike', age: 30, skills: Array(4)}
+
+ //클로저 closure:
+ //함수가 렉시컬 환경의 조함, 함수가 생성될 당시의 외부 변수를 기억
+ //생성 이후에도 꼐속 접급 가능
+
+ //어휘적 환경(Lexical ENvironment)
+let one;
+one = 1;
+function addOne(num) {
+    console.log(one + num );
+
+};
+addOne(5);
+
+function makeCounter() {
+    let num = 0;
+    return function() {
+        return num++;
+    };
+}
+
+let counter = makeCounter();
+console.log(counter());//0
+console.log(counter());//1
+console.log(counter());//2
+
+//setTimeout:일정시간이 지난 후 함수 실행
+
+// 방법_1
+// function fn() {
+//     console.log(3);
+// };
+// setTimeout(fn, 3000);//함수, 시간
+// //방벚_2
+// setTimeout(function() {
+//     console.log(3)
+// }, 3000);
+// //방법_3
+
+
+// const tId = function showName(name){
+//     console.log(name);
+// }
+// setTimeout(showName,3000,'Mike')//(실행할 함수, 시간, 인수)
+// clearTimeout(tId);//예정된 타임아웃을 지울 수 있음
+
+
+// serInterval: 일정 시간 간격으로 함수 실행
+// function showName(name){
+//     console.log(name);
+
+// }
+// setTimeout(showName, 3000, 'Mike');
+
+// console.log(tId);
+
+//setIterval 예제+ 자동 종료
+let num3 = 0;
+function showTime(){
+    console.log(`안녕하세요. 접속한지 ${num3++}초가 지났습니다.`);
+    if(num3 > 5) {
+        clearInterval(tId);
+    }
+}
+// const tId = setInterval(showTime, 1000);
+
+//call : call 메서드는 모든 함수에서 사용할 수 있으며 this를 특정 값으로 지정 할 수 있음
+const jane = {
+    name: 'Jane',
+};
+
+const tom = {
+    name: 'Tom',
+};
+
+function showThisName() {
+    console.log(this.name);
+} 
+// showThisName();// 
+// showThisName.call(jane);
+// showThisName.call(tom); //Jane => 함수 호출하고, call 을 부른다음 this 로 사용할 객체 넘김
+
+// function update(birthYear, occupation){
+//    this.birthYear = birthYear;
+//    this.occupation = occupation;
+// }
+
+// update.call(jane, 1996, 'developer');
+// console.log(jane);//{name: 'Jane', birthYear: 1996, occupation: 'developer'}
+
+// update.call(tom, 2000, 'student');
+// console.log(tom);//{name: 'Tom', birthYear: 2000, occupation: 'student'}
+
+
+//apply : 함수 매개변수를 처리하는 방법을 제외허면 call 과 같음
+//call 은 일반적인 함수와 마찬가지로 매개변수를 직접 받지만, apply 는 매개변수를 배열로 받음
+//call 은 배열안의 값을 직접 받고 => (null, 2,3,4)
+//apply  배열로 받음 => (null, [2,3,4])
+
+update.apply(jane,[1996, 'developer']);
+console.log(jane);//{name: 'Jane', birthYear: 1996, occupation: 'developer'}
+
+update.apply(tom, [2000, 'student']);
+console.log(tom);//{name: 'Tom', birthYear: 2000, occupation: 'student'}
+
+//bind :함수의 this 값을 바꿀 수 있음
+
+
+function update(birthYear, occupation){
+    this.birthYear = birthYear;
+    this.occupation = occupation;
+ }
+
+ const updateJane = update.bind(jane);
+ updateJane(1999, 'Nurse');
+ console.log(jane);//{name: 'Jane', birthYear: 1999, occupation: 'Nurse'}
+
+ //실용예제
+
+ const user12 = {
+    name:'Mike',
+    showName: function() {
+        console.log(`hello, ${this.name}`);
+    },
+ };
+ user12.showName();//hello, Mike
+ let fn = user12.showName;
+ fn();//hello, => fn에 할당할 떄 this를 잃어버린 것
+ fn.call(user12);//hello, Mike => 잃어버린 this를 call 로 다시 불렀기 때문
+ fn.apply(user12);//hello, Mike
+
+ //응용 문제 
+ let boundFn = fn.bind(user12);
+ boundFn();
+
+
+
+
+
+
+
+
+ //상속, prototype
+//상속_
+//공통된 변수 처리하기
+  //1. car 라는 상위 변수 만들기
+  const car = {
+    wheels:4,
+    drive() {
+        console.log('drive..')
+    }
+  }
+
+  //2. 공통된 부분인 wheels, drive 지우기
+const bmw = {
+    color: 'red',
+    navigation:1,
+};
+const benz = {
+    color: 'black',
+};
+const audi = {
+    color: 'blue',
+};
+//3. _proto_ 만들기=> car의 상속을 받음(bmw라는 곳에 값이 없으면 상속을 받아 car로 올라가서 상속 받을 수 있는것 = prototype chain)
+
+bmw._proto_ =car;
+benz._proto_ =car;
+audi._proto_ =car;
+
+//hasOwnProperty 를 써서 가지고 있는지 확인 가능 => 갖고 있으면 true, 없으면 False
+
+//생성자 함수 이용하기
+
+// const car = {
+//     wheels:4,
+//     drive() {
+//         console.log('drive..');
+//     };
+//   };
+// const Bmw = function(color) {
+//     this.color = color;
+//     this.wheels = 4,
+//     this.drive = function () {
+//         console.log('drive..');
+//     };
+// };
+
+// const x5 = new Bmw('red');
+// const z4 = new Bmw('blue');
+
+// x5._proto_ =car;
+// z4._proto_ =car;
+
+
+// const Bmw = function(color) {
+// this.color = color;
+// };
+//=================================
+// Bmw.prototype.wheels = 4;
+// Bmw.prototype.drive = function() {
+//     console.log('drive..');
+// };
+// Bmw.prototype.navigation = 1;
+// Bmw.prototype.stop = function () {
+//     console.log('STOP!!');
+// };
+//==================================
+
+// Bmw.prototype = {
+//     wheels:4,
+//     drive() {
+//         console.log('drive..');
+//     },
+//     navigation: 1,
+//     stop() {
+//         console.log('STOP!!!');
+//     },
+// };
+// => 이런식으로 만들면 (z4.constructor === Bmw);=> false 위처럼 하나씩 풀어 써야함
+
+// Bmw.prototype = {
+//     constructor: Bmw,//수동으로 명시해서 쓰면 사용 가능
+//     wheels:4,
+//     drive() {
+//         console.log('drive..');
+//     },
+//     navigation: 1,
+//     stop() {
+//         console.log('STOP!!!');
+//     },
+// };
+
+//  const x5 = new Bmw('red');
+//  const z4 = new Bmw('blue');
+
+
+//  //instanceof 연산자 : 해당 객체로부터 생성된 것인지 확인하는 연산자로 true or false 반환
+//  console.log(z4 instanceof Bmw);//true
+//  console.log(z4.constructor === Bmw);//true
+
+
+ //초기값을 얻기만 하고 바꾸지 못하게 만들 때 ==>  closure
+
+  Bmw = function(color){
+    const c = color;
+    this.getColor = function (){
+        console.log(c);
+    }
+ }
+
+ const x5 = new Bmw('red');
+ //color => black 으로 바꾸려 한다면 = Uncaught SyntaxError: Invalid or unexpected token
+
+ //class
+//생성자 예제
+ const User01 = function () {
+    this.name = name;
+    this.age = age;
+    this.showName = function () {
+        console.log(this.name)
+    }
+ }
+
+ const mike = new User01 ('Mike', 30);
+ console.log(mike);
+
+ //class 로 만들기
+ class User02 {
+constructor(name, age) {//=> constructor 객체로 만들어 주는 생성자메서드
+    this.name = name;
+    this.age = age;
+}
+showName() {
+    console.log(this.name);
+}
+ }
+
+ const kane = new User02('Kane',19);
+ console.log(kane);
+
+ //class 에서 상속 만들기=> extends
+
+//  class Car {
+//     constructor(color) {
+//         this.color = color;
+//         this.wheels = 4;
+//     }
+//     drive() {console.log('drive..')};
+//     stop() {console.log('STOP~!')}
+
+//  }
+//  class Hundai extends Car {
+//     park() {
+//         console.log('PARK')
+//     }
+//  }
+
+//  const z6 = new Hundai('blue');
+
+
+//상속에 관해서 정리하자면 car 라는 변수에 color, wheels 를 넣고, 외부에서 Hundai class 라는 것을 새로 만들 때
+// class_상속 (extend) 를 상속받아서 직접 넣지 않아도 car 만 입력해도 자동으로 상속 받을 수 있음
+
+
+//method overriding 메소드 오버라이팅
+// : 만약 Hundai 내부에 car에서 정의한 메소드와 동일한 메소드가 있을 때
+
+class Car {
+    constructor(color) {
+        this.color = color;
+        this.wheels = 4;
+    }
+    drive() {console.log('drive..')};
+    stop() {console.log('STOP~!')}
+
+ }
+ class Hundai extends Car {
+    constructor(color){
+        super(color);//super => 부모를 먼저 
+        this.navigation =  1;//새로운 것을 추가 할 때
+    }
+    park() {
+        console.log('PARK')
+    }
+    stop() {
+        super.stop();// =>>>>>> super.를 사용하면 부모 클래스도 상속받고 새로운 것도 유지함
+        console.log('START~!')}//START~! 덮어씀
+
+ }
+
+ const z6 = new Hundai('blue');
+
+
+
+
+
+
+
+ //어떤 일이 완료된 후 실행되는 함수 => callback 함수
+ //promis
+//  const pr = new Promise((resolve, reject) =>{
+
+//  })
+//판메자입장
+//  const prSuccese = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve('OK')
+//     }, 3000)
+//  });
+
+//  const prFail = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         reject('ERROR')
+//     }, 3000)
+//  });
+
+
+//소비자 입장
+//  const pr = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve('OK')
+//     }, 3000)
+//  });
+//  pr.then(
+//     function(result){console.log(result + '가지러 가자.')
+// },// -> 이행되었을때
+//     function(err){console.log('다시 주문해주세요..')}//-거부되었을때
+//  )
+
+
+ //then 대신 쓸 수 있는 것 => catch , finally 
+ //catch 는 reject 경우만 쓸 수 있음
+//  pr.then(
+//     function(result){console.log(result + '가지러 가자.')
+// },
+//     function(err){console.log('다시 주문해주세요..')}
+//  )
+//  //======== then =========>>>>>> catch
+//  //1. 가독성이 좋음
+//  //2. 에러를 잡기가 좋음
+//  pr.then(function(result){}
+//  ).catch(
+//     function(err){}
+//  );
+
+ //==then >>>>>> catch >>>>>>> finally
+ //로딩 화면을 없애버릴 때 유용함
+//  pr.then(function(result){}
+//  ).catch(
+//     function(err){}
+//  ).finally(
+//     function(){
+//         console.log('---주문 끝---')
+//     }
+//  )
+
+
+ //promis + catch + finally 예제
+//  const pr = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//        // resolve('OK')
+//        reject(new Error('err....'));
+//     }, 1000);
+//  });
+
+//  console.log('시작');
+//  pr.then((result)=>{
+//     console.log(result);
+//  })
+//  .catch((err) => {
+//     consdole.log(err);
+//  })
+//  .finally(()=> {
+//     console.log('끝');
+//  })
+
+
+//콜백지옥 =*************************
+// const f1 = (callback) => {
+//     setTimeout (function() {
+//     console.log ("1번 주문 완료");
+//     callback(); 
+//     }, 1000);
+//     }
+//     const f2 = (callback) => {
+//     setTimeout(function () {
+//     console.log ("2번 주문 완료"); 
+//     callback();
+//     }, 3000);
+//     };
+//     const f3 = (callback) => {
+//     setTimeout (function () {
+//     console.log("3번 주문 완료") ;
+//     callback();
+//     }, 2000);
+//     };
+
+//     console.log('시작');
+//     f1(function () {
+//         f2(function() {
+//             f3(function() {
+//                 console.log('끝');
+//             });
+//         });
+//     });
+
+//
+//  const f1 = () =>{
+//  return new Promise((res,rej) => {
+//     setTimeout(()=>{
+//         res('1번 주문 완료');
+//     }, 1000);
+//   });
+// };
+
+// const f2 = (message) =>{
+//     console.log(message);
+//     return new Promise((res,rej) => {
+//        setTimeout(()=>{
+//            res('2번 주문 완료');
+//        }, 3000);
+//      });
+//    };
+
+//    const f3 = (message) =>{
+//     console.log(message)
+//     return new Promise((res,rej) => {
+//        setTimeout(()=>{
+//            res('3번 주문 완료');
+//        }, 2000);
+//      });
+//    };
+
+
+   //promise.all => 프로미스로 넘겨준 값이 배열로 들어옴 ['1번 주문 완료', '2번 주문 완료', '3번 주문 완료']
+   //한꺼번에 시작하고 모두 이행되면 값을 사용 할 수 있음 +시간 절약
+   //정보가 하나라도 누락되면 페이지를 보여주지 않음 => 
+//    console.time('x');
+//    Promise.all([f1(), f2(), f3()]).then((res)=> {
+//     console.log(res);
+//     console.timeEnd('x');
+//    });
+
+//race => 하나라도 완료되면 끝
+// console.time('x');
+// Promise.race([f1(), f2(), f3()]).then((res)=> {
+//  console.log(res);
+// //  console.timeEnd('x');
+// });
+
+
+//    //프로미스 체이닝(Promise chaining)
+//    console.log('시작');
+//    f1()
+//    .then((res)=> f2(res))
+//    .then((res)=> f3(res))
+//    .then((res)=> console.log(res))
+//    .catch(console.log)
+//    .finally(() => {
+//     console.log('끝')
+//    })
+
+
+
+
+//async await
+// async function getName() {
+//     // return 'Mike'; //Mike
+//     return Promise.resolve('Tom');// promise 를 사용=> 'tom
+
+// }
+
+// console.log(getName());//Promise {<fulfilled>: 'Mike'}
+// getName().then((name)=> {
+//     console.log(name);
+// })
+
+//에러 
+async function getName() {
+    // return 'Mike'; //Mike
+throw new Error('err...');// promise 를 사용=> 'tom
+
+}
+getName().catch((err)=> {
+    console.log(err);
+})
+
+function getName(name) {
+    return new Promise((res,rej) => {
+       setTimeout(()=>{
+           res(name);
+       }, 1000);
+     });
+   };
+//await 은 async 안에서만 사용 가능
+   async function showName(){
+    const result = await getName('Mike');
+    console.log(result);
+   }
+
+   console.log('Start!');
+   showName();
+
+
+
+// async +await If(error) => try {}, catch {}
+   const f1 = () =>{
+    return new Promise((res,rej) => {
+       setTimeout(()=>{
+           res('1번 주문 완료');
+       }, 1000);
+     });
+   };
+   
+   const f2 = (message) =>{
+       console.log(message);
+       return new Promise((res,rej) => {
+          setTimeout(()=>{
+            //   res('2번 주문 완료');
+            rej(new Error('err...'));
+          }, 3000);
+        });
+      };
+   
+      const f3 = (message) =>{
+       console.log(message)
+       return new Promise((res,rej) => {
+          setTimeout(()=>{
+              res('3번 주문 완료');
+          }, 2000);
+        });
+      };
+
+console.log('시작')
+async function order(){
+    try{
+        const result1 = await f1();
+        const result2 = await f2(result1);
+        const result3 = await f3(result2);
+        console.log(result3);
+    }
+    catch (e){
+        console.log(e)
+    }
+    console.log('종료');
+}
+
+order();
+   
+    //   f1()
+    //      .then((res)=> f2(res))
+    //      .then((res)=> f3(res))
+    //      .then((res)=> console.log(res))
+    //      .catch(console.log)
+    //      .finally(() => {
+    //       console.log('끝')
+    //      })
+      
+
+    //Gernerator : 함수의 실행을 중간에 멈췄다 재개할 수 있는 기능
+
+    function* fun(){
+        try{
+            console.log(1);
+            yield 1;
+            console.log(2);
+            yield 2;
+            console.log(3);
+            console.log(4);
+            yield 3;
+            return 'finish';
+        }
+        catch(e){
+            console.log(e)
+        }
+        
+    }
+    const ab = fun();
+
+    // ab.next(); => yield 1;
+    //ab.return ('END')  done => End
+
+
+    //iterable => 반복이 가능
+    //Symbol.iterator 메서드가 있음
+    //Symbol.iterator 는 iterator 반환해야 함
+
+    //iterator
+    //1. next 메서드를 가짐
+    //2. next 메서드는 value와 done 속성을 가진 객체를 반환함
+    //3. 작업이 끝나면 done 은  true 를 가진다
+
+
+const arr20 = [1,2,3,4,5];
+ // generator 는 외부로 부터 값을 받을 수 있음  next() 에 인수를 전달
+ // generator 는 값을 미리 만들지 않음=> 필요한 값만 그때 그때 생성
