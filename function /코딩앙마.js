@@ -335,7 +335,7 @@ let userList  = [
 
 
 
-//arr.filter(fn) => 만족하는 모든 요소를 배열로 반환
+//arr.filter(fn) => 만족하는 모든 요소를 배열로 반환 => true 평가된 함수를 꺼낸다면 , reject는 없애버림
 arr = [1,2,3,4,5,6];
 const arr01 = arr.filter((item) => {
   return item % 2 === 0 ;
