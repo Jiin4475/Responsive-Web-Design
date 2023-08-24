@@ -1,43 +1,26 @@
-//플레이어 구성과 관련된 모든 로직을 담당
-//openPlayerConfig는 수정 버튼을 눌렀을 때 나타나게함
-function openPlayerConfig(event){
-    editedPlayer = +event.target.dataset.playerid;//+ '1' => 1
-    playerConfigOverlayElement.style.display = 'block';
-    backdropElement.style.display = 'block';
-}
-//openPlayerConfig는 캔슬버튼등 을 눌렀을때 사라지게 함
-function closePlayerConfig(){
-    playerConfigOverlayElement.style.display = 'none';
-    backdropElement.style.display = 'none';
-    formElement.firstElementChild.classList.remove('error');
-    errorsOutputElement.textContent = '';
-    formElement.firstElementChild.lastElementChild.value = '';
-}
-//form에 플레이어 저장:양식이 제출되면 실행
-function savePlayerConfig(event){
-    //브라우저의 기본 동작을 방해
-    event.preventDefault();//페이지 재로드하지 않음
-    const formData = new FormData(event.target);
-    const enteredPlayerName = formData.get('playername').trim();
-    //직접 사용할 수 있는 내장된 함수 FormData()
-    //event는 이 이벤트를 담당한 HTML 요소를 가리키는 타켓속성이 있음
-    //trim(): 공백을 다 지워버림=> 공백을 제출하면 알림이 뜸
+function openPlayerConfig(){//오버레이 여는 함수
+playerConfigOverlayElement.style.display = 'block';
+backdropElemnt.style.display = 'block';
 
-    if (!enteredPlayerName){//enteredPlayerName === ''
+}
+
+function closePlayerConfig(){
+playerConfigOverlayElement.style.display = 'none';
+backdropElemnt.style.display = 'none';
+formElement.firstElementChild.classList.remove('error');
+errorsOutputElement.textContent = '';
+}
+
+function savePlayerConfig(event){
+    event.preventDefault();//브라우저 디폴트 기능 막기
+    const formData = new FormData(event.target);
+    const enteredPlayername = formData.get('playername').trim();//공백은 =falsy
+
+    if(!enteredPlayername) {
         event.target.firstElementChild.classList.add('error');
         errorsOutputElement.textContent = 'Please enter a valid name!';
-       return;//호출한 함수의 실행이 중지됨:여기서 멈춤
-    } 
-    const updatedPlayerDataElement = document.getElementById('player-'+ editedPlayer +'-data');
-    updatedPlayerDataElement.children[1].textContent = enteredPlayerName;
-    //
-    // if (editedPlayer === 1 ){
-    //     players[0].name = enteredPlayerName;
+        return;// 반환을 실행하면 함수가 중지됨
+    }
 
-    // }else {
-    //     players[1].name = enteredPlayerName;
-    // }
-    players[editedPlayer -1].name = enteredPlayerName;
 
-    closePlayerConfig();//플레이어 업데이트 햇으면 모달 숨기기
 }

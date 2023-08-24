@@ -138,7 +138,7 @@ Math.sqrt(16)// 4
 
 //1. indexOf() 문자를 인수로 받아서 몇번째에 위치하는지 알려줌
 
-let desc = 'hi guys. Nice to meet you.';
+let desc = 'hi guys. Nice mto eet you.';
 
 desc.indexOf('to'); //=> 14
 desc.indexOf('man'); // 만약 찾는 문자가 없으면 -1 반환
@@ -229,6 +229,8 @@ function hasCola(str){//콜라가 포함되어 있는지만 판별
 //3. unshift() 앞에 삽입
 //4. shift()  앞에 삭제
 
+
+//arr.splice(변경을 시작할 인덱스, (배열에서 제거할 요소의 수), (배열에 추가할 요소))
 //splice(n, m) 특정요소 지움 n번 째 시작해서 m 갯수 지우기
 let arr1 = [1,2,3,4,5];
 arr.splice(1, 2);
